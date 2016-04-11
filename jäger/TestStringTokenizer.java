@@ -13,4 +13,9 @@ public class TestStringTokenizer {
 		st = new StringTokenizer("Hallo Welt");
 		assertEquals("Hallo",st.nextToken());
 	}
+	@Test
+	public void testNextTokenTabDelimiter() {
+		st = new StringTokenizer("Hallo	Welt");
+		assertEquals("Hallo",st.nextToken());
+	}
 }
