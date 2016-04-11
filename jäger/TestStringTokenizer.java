@@ -33,4 +33,9 @@ public class TestStringTokenizer {
 		st = new StringTokenizer("Hallo\rWelt");
 		assertEquals("Hallo",st.nextToken());
 	}
+	@Test(expected=NoSuchElementException.class)
+	public void testNextTokenWithoutExistingToken() {
+		st = new StringTokenizer("");
+		st.nextToken();
+	}
 }
