@@ -28,4 +28,9 @@ public class TestStringTokenizer {
 		st = new StringTokenizer("Hallo\fWelt");
 		assertEquals("Hallo",st.nextToken());
 	}
+	@Test
+	public void testNextTokenWithCarriageReturnDelimiter() {
+		st = new StringTokenizer("Hallo\rWelt");
+		assertEquals("Hallo",st.nextToken());
+	}
 }
