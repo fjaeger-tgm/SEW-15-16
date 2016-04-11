@@ -23,4 +23,9 @@ public class TestStringTokenizer {
 		st = new StringTokenizer("Hallo\nWelt");
 		assertEquals("Hallo",st.nextToken());
 	}
+	@Test
+	public void testNextTokenFormFeedDelimiter() {
+		st = new StringTokenizer("Hallo\fWelt");
+		assertEquals("Hallo",st.nextToken());
+	}
 }
