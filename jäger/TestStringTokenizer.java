@@ -7,4 +7,10 @@ import org.junit.*;
 
 public class TestStringTokenizer {
 	StringTokenizer st;
+	
+	@Test
+	public void testNextTokenSpaceDelimiter() {
+		st = new StringTokenizer("Hallo Welt");
+		assertEquals("Hallo",st.nextToken());
+	}
 }
