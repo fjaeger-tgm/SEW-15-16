@@ -18,4 +18,9 @@ public class TestStringTokenizer {
 		st = new StringTokenizer("Hallo	Welt");
 		assertEquals("Hallo",st.nextToken());
 	}
+	@Test
+	public void testNextTokenNewLineDelimiter() {
+		st = new StringTokenizer("Hallo\nWelt");
+		assertEquals("Hallo",st.nextToken());
+	}
 }
