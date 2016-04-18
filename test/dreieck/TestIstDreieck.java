@@ -2,6 +2,7 @@ package dreieck;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,7 +57,7 @@ public class TestIstDreieck {
 		
 		assertFalse(dreieck.istDreieck());
 	}
-	
+	@Test
 	public void testIstDreieckBNegativ() {
 		dreieck.setSeite_a(1);
 		dreieck.setSeite_b(-2);
@@ -64,11 +65,35 @@ public class TestIstDreieck {
 		
 		assertFalse(dreieck.istDreieck());
 	}
-	
+	@Test
 	public void testIstDreieckCNegativ() {
 		dreieck.setSeite_a(1);
 		dreieck.setSeite_b(2);
 		dreieck.setSeite_c(-3);
+		
+		assertFalse(dreieck.istDreieck());
+	}
+	@Test
+	public void testIstDreieckAplusBistgleichC() {
+		dreieck.setSeite_a(1);
+		dreieck.setSeite_b(2);
+		dreieck.setSeite_c(3);
+		
+		assertFalse(dreieck.istDreieck());
+	}
+	@Test
+	public void testIstDreieckAplusCistgleichB() {
+		dreieck.setSeite_a(1);
+		dreieck.setSeite_b(3);
+		dreieck.setSeite_c(2);
+		
+		assertFalse(dreieck.istDreieck());
+	}
+	@Test
+	public void testIstDreieckBplusCistgleichA() {
+		dreieck.setSeite_a(3);
+		dreieck.setSeite_b(1);
+		dreieck.setSeite_c(2);
 		
 		assertFalse(dreieck.istDreieck());
 	}
