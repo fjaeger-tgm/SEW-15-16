@@ -145,5 +145,13 @@ public class TestIstDreieck {
 		
 		assertFalse(dreieck.istDreieck());
 	}
+	@Test
+	public void testIstDreieckTrue() {
+		dreieck.setSeite_a(60);
+		dreieck.setSeite_b(80);
+		dreieck.setSeite_c(40);
+		
+		assertFalse(dreieck.istDreieck());
+	}
 	
 }
