@@ -101,7 +101,7 @@ public class Dreieck {
 
 			int hypothenuse = 0;
 			int kathete1 = 0;
-			int kathete2 = 0;
+			int kathete2 = 0; 
 
 			if (seite_a > seite_b 
 					&& seite_a > seite_c) {

@@ -151,7 +151,7 @@ public class TestIstDreieck {
 		dreieck.setSeite_b(80);
 		dreieck.setSeite_c(40);
 		
-		assertFalse(dreieck.istDreieck());
+		assertTrue(dreieck.istDreieck());
 	}
 	
 }
