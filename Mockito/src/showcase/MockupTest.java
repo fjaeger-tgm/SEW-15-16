@@ -23,30 +23,26 @@ public class MockupTest {
 		 mockedList.add("one");
 		 mockedList.clear();
 		 
+		//überprüft ob du die Anweisung ausgeführt wurde
 		 verify(mockedList).add("one");
 		 verify(mockedList).clear();
 	}
 	@Test(expected=RuntimeException.class)
 	public void testStubbing() {
-		//You can mock concrete classes, not only interfaces
-		
 		 
-		 //stubbing
 		 when(mockedList.get(0)).thenReturn("first");
 		 when(mockedList.get(1)).thenThrow(new RuntimeException());
 		 
-		 //following prints "first"
+		 //gibt first aus, da wir es Zeile 35 definiert haben
 		 System.out.println(mockedList.get(0));
 		 
-		 //following throws runtime exception
+		 //wirft eine RuntimeExeception
 		 System.out.println(mockedList.get(1));
 		 
-		 //following prints "null" because get(999) was not stubbed
+		 //printet null da, wir es nicht definiert haben
 		 System.out.println(mockedList.get(999));
 		  
-		 //Although it is possible to verify a stubbed invocation, usually it's just redundant
-		 //If your code cares what get(0) returns then something else breaks (often before even verify() gets executed).
-		 //If your code doesn't care what get(0) returns then it should not be stubbed. Not convinced? See here.
+		 //überprüft ob du die Anweisung ausgeführt wurde
 		 verify(mockedList).get(0);
 	}
 	/*@Test
