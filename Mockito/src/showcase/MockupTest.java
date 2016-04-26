@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
+import org.mockito.exceptions.verification.NoInteractionsWanted;
 
 public class MockupTest {
 	LinkedList mockedList;
@@ -140,17 +141,30 @@ public class MockupTest {
 		List mockOne = mock(List.class);
 		List mockTwo = mock(List.class);
 		List mockThree = mock(List.class);
-		 //using mocks - only mockOne is interacted
+		 
 		 mockOne.add("one");
 
-		 //ordinary verification
+		 //überprüft ob du die Anweisung ausgeführt wurde
 		 verify(mockOne).add("one");
 
-		 //verify that method was never called on a mock
+		 //überprüft ob die Anweisung niemals ausgeführt wurde
 		 verify(mockOne, never()).add("two");
 
-		 //verify that other mocks were not interacted
+		 //überprüft ob die anderen Listen nicht davon betroffen waren
 		 verifyZeroInteractions(mockTwo, mockThree);
+	}
+	
+	@Test(expected= NoInteractionsWanted.class)
+	public void testInvocation() {
+		//using mocks
+		 mockedList.add("one");
+		 mockedList.add("two");
+
+		 verify(mockedList).add("one");
+
+		 //Fehlermeldung weil keine Interaktionen gewollt sind
+		 verifyNoMoreInteractions(mockedList);
+		
 	}
 	
 }
