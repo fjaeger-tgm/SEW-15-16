@@ -102,7 +102,7 @@ public class MockupTest {
 	}
 	
 	@Test
-	public void testVerication() {
+	public void testVerification() {
 		 // A. Single mock whose methods must be invoked in a particular order
 		 List singleMock = mock(List.class);
 
@@ -126,12 +126,31 @@ public class MockupTest {
 		 secondMock.add("was called second");
 
 		 //create inOrder object passing any mocks that need to be verified in order
-		 InOrder inOrder = inOrder(firstMock, secondMock);
+		 InOrder inOrder2 = inOrder(firstMock, secondMock);
 
 		 //following will make sure that firstMock was called before secondMock
-		 inOrder.verify(firstMock).add("was called first");
-		 inOrder.verify(secondMock).add("was called second");
+		 inOrder2.verify(firstMock).add("was called first");
+		 inOrder2.verify(secondMock).add("was called second");
 
 		 // Oh, and A + B can be mixed together at will
 	}
+	
+	@Test
+	public void testInteraction() {
+		List mockOne = mock(List.class);
+		List mockTwo = mock(List.class);
+		List mockThree = mock(List.class);
+		 //using mocks - only mockOne is interacted
+		 mockOne.add("one");
+
+		 //ordinary verification
+		 verify(mockOne).add("one");
+
+		 //verify that method was never called on a mock
+		 verify(mockOne, never()).add("two");
+
+		 //verify that other mocks were not interacted
+		 verifyZeroInteractions(mockTwo, mockThree);
+	}
+	
 }
