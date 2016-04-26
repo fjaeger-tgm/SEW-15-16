@@ -58,12 +58,12 @@ public class MockupTest {
 
 		 //you can also verify using an argument matcher
 		 verify(mockedList).get(anyInt());
-	}
-	*/
+	}*/
+	
 	
 	@Test
 	public void testNumberOfInvocations() {
-		 //using mock
+
 		 mockedList.add("once");
 
 		 mockedList.add("twice");
@@ -73,20 +73,30 @@ public class MockupTest {
 		 mockedList.add("three times");
 		 mockedList.add("three times");
 
-		 //following two verifications work exactly the same - times(1) is used by default
 		 verify(mockedList).add("once");
+		 //schaut wie oft die Anweisung ausgeführt wurde
 		 verify(mockedList, times(1)).add("once");
 
 		 //exact number of invocations verification
 		 verify(mockedList, times(2)).add("twice");
 		 verify(mockedList, times(3)).add("three times");
 
-		 //verification using never(). never() is an alias to times(0)
+		 //überprüft ob die Anweisung gar nicht ausgeführt wurde
 		 verify(mockedList, never()).add("never happened");
 
-		 //verification using atLeast()/atMost()
+		 // ausgeführt >=1
 		 verify(mockedList, atLeastOnce()).add("three times");
+		 // ausgeführt >=2
 		 verify(mockedList, atLeast(2)).add("twice");
+		 // augeführt <= 5
 		 verify(mockedList, atMost(5)).add("three times");
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testStubbingMethodsWithExceptions() {
+		doThrow(new RuntimeException()).when(mockedList).clear();
+
+		   //Aufgrund der Zeile 97 wird hier eine RuntimeException geworfen
+		   mockedList.clear();
 	}
 }
